@@ -1,0 +1,19 @@
+.header {
+    height: 100px;
+    background-color: darkcyan;
+}
+
+.sidebar {
+    float: left;
+    width: 20%;
+}
+
+.main {
+    margin-left: 20%;
+}
+
+.wrapper:after {
+    content: '';
+    display: block;
+    clear: both;
+}

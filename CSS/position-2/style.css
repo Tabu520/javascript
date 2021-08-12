@@ -1,0 +1,27 @@
+/* 
+    position: static* | relative | fixed | absolute | sticky
+*/
+
+.box {
+    width: 100px;
+    height: 100px;
+    color: white;
+}
+
+.red {
+    background-color: red;
+}
+
+.green{
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.fixed {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}

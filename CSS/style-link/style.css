@@ -1,0 +1,40 @@
+/*
+    states:
+    - a:link (default)
+    - a:visited
+    - a:hover
+    - a:active
+*/
+
+.default-link:link {
+    color: #496cca;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+/* Đã click chuột vào */
+.default-link:visited {
+    color: #496cca;
+}
+
+/* Trỏ chuột lên nhưng không click */
+.default-link:hover {
+    text-decoration: underline;
+}
+
+/* Khi trỏ chuột lên, click vào nhưng chưa thả chuột ra */
+.default-link:active {
+    color: red;
+}
+
+.btn-link {
+    background: #496cca;
+    text-decoration: none;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 8px 16px;
+}
+
+.btn-link:hover {
+    background: #2e4fa9;
+}

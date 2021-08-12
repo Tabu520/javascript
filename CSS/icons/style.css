@@ -1,0 +1,26 @@
+/*
+    background-color: color;
+    background-color: transparent;
+    background-color: gradient;
+*/
+
+body {
+    background-color: darkcyan;
+    font-family: sans-serif;
+}
+
+.list-item {
+    color: red;
+    font-weight: bold;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-width: 2px;
+    background-color: #DDD;
+}
+
+.list-item-transparent {
+    /* background-color: transparent; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
+}

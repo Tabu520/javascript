@@ -1,0 +1,23 @@
+/*
+    Syntaxes:
+    - border-width: 1px;
+    - border-style: solid | dotted | dashed | ... 
+    - border-color: red
+    Shorthand:
+    - border: 1px solid red;
+    Note:
+    - border-width: top right bottom left
+    - border-width: top left-right bottom
+    - border-width: top-bottom left-right
+*/
+
+.list-item {
+    color: blue;
+    font-weight: bold;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: cadetblue;
+    border-radius: 4px;
+}

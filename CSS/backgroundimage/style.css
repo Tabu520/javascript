@@ -1,0 +1,53 @@
+/*
+    background-image: url(...);
+    background-repeat: repeat-x | repeat-y | no-repeat | repeat (defauly)
+    background-size: % | contain | cover | auto (default)
+    background-position: x y | center
+    background-attachment: scroll (default) | fixed
+*/
+
+body {
+    background-color: #DDD;
+    font-family: sans-serif;
+}
+
+.list-item {
+    color: red;
+    font-weight: bold;
+    padding: 16px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: lightgray;
+}
+
+.list-item-transparent {
+    /* background-color: transparent; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: white;
+}
+
+/* Họa tiết lặp đi lặp lại */
+.list-item-pattern {
+    background-image: url(./pattern_2.jpg);
+    background-size: 20%;
+    background-repeat: repeat;
+    height: 100px;
+    color: white;
+}
+
+.list-item-image {
+    background-image: url(./dota_stars_wallpaper.jpg);
+    height: 100px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+}
+
+.list-item-parallax {
+    background-image: url(./dota_stars_wallpaper.jpg);
+    height: 100px;
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;
+}

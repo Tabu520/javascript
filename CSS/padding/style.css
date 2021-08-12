@@ -1,0 +1,17 @@
+/*
+    Syntaxes:
+    - margin-top
+    - margin-right
+    - margin-bottom
+    - margin-left
+    - margin: top right bottom left
+    - margin: top left-right bottom
+    - margin: top-bottom left-right
+    - margin: all
+*/
+
+.list-item {
+    color: blue;
+    font-weight: bold;
+    padding: 16px;
+}
