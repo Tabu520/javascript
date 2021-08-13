@@ -5,6 +5,8 @@ import {
   CardTitle
 } from 'reactstrap';
 
+import { CartContext } from '../context/Cart';
+
 class Products extends Component {
 
   constructor(props) {
@@ -17,11 +19,11 @@ class Products extends Component {
 
   componentDidMount() {
     axios.get('https://vxw7e.sse.codesandbox.io/products')
-    .then(res => {
-      this.setState({
-        products: res.data
+      .then(res => {
+        this.setState({
+          products: res.data
+        });
       });
-    });
   }
 
   render() {
@@ -41,7 +43,11 @@ class Products extends Component {
                 <CardBody>
                   <CardTitle tag="h5">{product.name}</CardTitle>
                   <CardText>{product.description}</CardText>
-                  <Button>Add to cart</Button>
+                  <CartContext.Consumer>
+                    {
+                      ({ addToCart }) => <Button onClick={() => addToCart(product)}>Add to cart</Button>
+                    }
+                  </CartContext.Consumer>
                 </CardBody>
               </Card>
             </Col>

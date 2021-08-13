@@ -5,23 +5,26 @@ import {
 } from "react-router-dom";
 
 import Home from './components/Home';
-import Products from './components/pages/Products';
+import Products from './pages/Products';
 import TopMenu from './components/TopMenuComponent';
+import { CartProvider } from './context/Cart';
 import './App.css';
 
 function App() {
 	return (
-		<Router>
-			<div>
-				<TopMenu />
-				<Route path="/products" exact component={Products}>
-					<Products />
-				</Route>
-				<Route path="/" exact component={Home}>
-					<Home />
-				</Route>
-			</div>
-		</Router>
+		<CartProvider>
+			<Router>
+				<div className="App">
+					<TopMenu />
+					<Route path="/products" exact component={Products}>
+						<Products />
+					</Route>
+					<Route path="/" exact component={Home}>
+						<Home />
+					</Route>
+				</div>
+			</Router>
+		</CartProvider>
 	);
 }
 
