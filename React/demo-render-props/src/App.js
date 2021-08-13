@@ -1,10 +1,9 @@
 import React from 'react';
 
 import './App.css';
-import List from './components/List';
 import Counter from './components/Counter';
-import NumberContext from './context/NumberContext';
-import NumberProvider from './context/NumberProvider';
+import { NumberProvider } from './context/NumberContext';
+import RandomNumber from './components/RandomNumber';
 
 const arr = ["A", "B", "C"];
 
@@ -14,14 +13,7 @@ function App() {
   return (
     <NumberProvider>
       <div className="App">
-        <NumberContext.Consumer>
-          {({ number, updateNumber }) =>
-            <div>
-              <h2>{number}</h2>
-              <button onClick={updateNumber}>Update number</button>
-            </div>
-          }
-        </NumberContext.Consumer>
+        <RandomNumber />
         <hr></hr>
         <Counter>
           {({ count }) =>
