@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Count from './components/Count';
+import Counter from './components/Counter';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <button onClick={() => this.removeCounter()}>Remove Counter</button>
-        {this.state.showCounter && <Count />}
+        {this.state.showCounter && <Counter />}
       </div>
     );
   }
