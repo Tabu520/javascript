@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, ScrollView, StatusBar, Switch, FlatList} from "react-native";
+import { StyleSheet, Text, View, Button, ScrollView, StatusBar, Switch, FlatList } from "react-native";
 
 import Count from "./components/Count";
 import CountEvenNumbers from "./components/CountEvenNumbers";
-import contacts, {compareName} from "./components/contacts";
+import contacts, { compareName } from "./components/contacts";
 import Row from "./components/Row";
 
 
@@ -24,7 +24,8 @@ export default class App extends React.Component {
     }));
   }
 
-  renderItem = (obj) => <Row {...obj.item} />
+  // item : {name: String, phone: String, key: Number}
+  renderItem = (obj) => <Row name={obj.item.name} phone={obj.item.phone} />
 
   render() {
     return (
@@ -33,9 +34,10 @@ export default class App extends React.Component {
         <Button title="Sort" onPress={this.sort} />
         {
           this.state.showContacts && (
-            <FlatList 
+            <FlatList
+              keyExtractor={(item, index) => item.key}
               data={this.state.contacts}
-              renderItem = {this.renderItem}
+              renderItem={this.renderItem}
             />
           )
         }
