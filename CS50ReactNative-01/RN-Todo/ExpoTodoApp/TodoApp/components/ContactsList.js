@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import Row from './Row';
 
 // item : {name: String, phone: String, key: Number}
-renderItem = (obj) => <Row name={obj.item.name} phone={obj.item.phone} />
+const renderItem = (obj) => <Row name={obj.item.name} phone={obj.item.phone} />
 
-renderSectionHeader = (obj) => <Text>{obj.section.title}</Text>
+const renderSectionHeader = (obj) => <Text>{obj.section.title}</Text>
 
 const ContactsList = props => {
 

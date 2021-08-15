@@ -1,4 +1,4 @@
-const NUM_CONTACTS = 100;
+const NUM_CONTACTS = 1;
 
 const firstName = ['Emma', 'Noah', 'Olivia', 'Liam', 'Ava', 'William', 'Sophia', 'Mason', 'Issabela', 'James',
 'Mia', 'Benjamin', 'Charlotte', 'Jacob', 'Abigail', 'Michael', 'Emily', 'Elijah', 'Harper', 'Ethan', 'Amelia', 'Alexander',
