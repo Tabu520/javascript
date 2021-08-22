@@ -1,78 +1,41 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, ScrollView, StatusBar, Switch, FlatList, SectionList } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Count from "./components/Count";
-import CountEvenNumbers from "./components/CountEvenNumbers";
-import contacts, { compareName } from "./components/contacts";
-import Row from "./components/Row";
-import ContactsList from "./components/ContactsList";
-import AddContactForm from "./components/AddContactForm";
+import ContactListScreen from "./screens/ContactListScreen";
+import AddContactScreen from "./screens/AddContactScreen";
+import ContactDetailScreen from "./screens/ContactDetailScreen";
+import { ContactsProvider } from "./contexts/Contacts"
 
+const Stack = createNativeStackNavigator();
 
 export default class App extends React.Component {
 
-  state = {
-    showContacts: true,
-    showForm: false,
-    contacts: contacts
-  }
-
-  toggleContacts = () => {
-    this.setState(prevState => ({ showContacts: !prevState.showContacts }));
-  }
-
-  toggleForm = () => {
-    this.setState(prevState => ({ showForm: !prevState.showForm }));
-  }
-
-  sort = () => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts].sort(compareName)
-    }));
-  }
-
-  addContact = newContact => {
-    this.setState(prevState => ({
-      showForm: false,
-      contacts: [...prevState.contacts, newContact]
-    }));
-  }
-
   render() {
-    if(this.state.showForm) return <AddContactForm onSubmit={this.addContact}/>
     return (
-      <View style={styles.container}>
-        <Button title="Toggle Contacts" onPress={this.toggleContacts} />
-        <Button title="Toggle Form" onPress={this.toggleForm} />
-        <Button title="Sort" onPress={this.sort} />
-        {
-          this.state.showContacts && (
-            <ContactsList
-              contacts={this.state.contacts} />
-          )
-        }
-      </View>
+      <ContactsProvider>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="ContactList"
+                component={ContactListScreen}
+                options={{
+                  title: "Contacts"
+                }}>
+              </Stack.Screen>
+              <Stack.Screen
+                name="AddContact"
+                component={AddContactScreen}
+              />
+              <Stack.Screen
+                name="ContactDetail"
+                component={ContactDetailScreen}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+      </ContactsProvider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#fff",
-    margin: 10,
-    marginTop: StatusBar.currentHeight + 20,
-  },
-
-  count: {
-    fontSize: 48
-  },
-
-  btn: {
-    backgroundColor: 'red'
-  },
-
-  sectionHeader: {
-    fontSize: 24
-  }
-});
 

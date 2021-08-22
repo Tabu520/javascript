@@ -16,8 +16,7 @@ function App() {
         <RandomNumber />
         <hr></hr>
         <Counter>
-          {({ count }) =>
-            <h1>{count}</h1>}
+          {({ count }) => <h1>{count}</h1>}
         </Counter>
       </div>
     </NumberProvider>

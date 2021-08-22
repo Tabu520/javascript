@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet} from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
-const Row = props =>(
-    <View style={styles.row}>
+const Row = props => (
+    <TouchableOpacity
+        style={styles.row}
+        onPress={() => {
+            props.onSelectContact(props)
+        }}
+    >
         <Text >{props.name}</Text>
         <Text >{props.phone}</Text>
-    </View>
+    </TouchableOpacity>
 )
 
 const styles = StyleSheet.create({

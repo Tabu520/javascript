@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Button, TextInput, View, StyleSheet, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { ContactContext } from "../contexts/Contacts";
+
+
 export default class AddContactForm extends Component {
 
     static propTypes = {
@@ -59,22 +62,6 @@ export default class AddContactForm extends Component {
     render() {
         return (
             <View style={styles.inputForm}>
-                {/* <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Name"
-                /> */}
                 <TextInput
                     style={styles.input}
                     value={this.state.name}
@@ -89,8 +76,15 @@ export default class AddContactForm extends Component {
                     keyboardType="numeric"
                     maxLength={10}
                 />
-                <Button title="Add contact" onPress={this.handleSubmitContact}
-                    disabled={!this.state.isFormValid} />
+                <ContactContext.Consumer>
+                    {
+                        ({ addContact }) =>
+                            <Button title="Add contact"
+                                onPress={() => addContact(this.state)}
+                                disabled={!this.state.isFormValid} />
+                    }
+                </ContactContext.Consumer>
+                <Button title="Return contact list" onPress={this.handleSubmitContact} />
             </View>
         );
     }
@@ -101,7 +95,6 @@ const styles = StyleSheet.create({
     inputForm: {
         flex: 1,
         margin: 10,
-        marginTop: StatusBar.currentHeight,
         justifyContent: "center"
     },
 
