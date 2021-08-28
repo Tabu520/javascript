@@ -1,47 +1,57 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import contacts from '../components/contacts';
+import contacts from "../components/contacts";
+import { fetchUsers } from "../apis/api";
 
 export const ContactContext = React.createContext();
 
 export class ContactsProvider extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: [],
+      showForm: false,
+      showContacts: true,
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            contacts: contacts,
-            showForm: false,
-            showContacts: true,
-        }
-    }
+  componentDidMount() {
+    this.getUsers();
+  }
 
-    toggleForm = () => {
-        this.setState(prevState => ({ showForm: !prevState.showForm }));
-    }
+  getUsers = async () => {
+    const results = await fetchUsers();
+    this.setState({ contacts: results });
+  };
 
-    sort = () => {
-        this.setState(prevState => ({
-            contacts: [...prevState.contacts].sort(compareName)
-        }));
-    }
+  toggleForm = () => {
+    this.setState((prevState) => ({ showForm: !prevState.showForm }));
+  };
 
-    addContact = newContact => {
-        this.setState(prevState => ({
-            showForm: false,
-            contacts: [...prevState.contacts, newContact]
-        }));
-    }
+  sort = () => {
+    this.setState((prevState) => ({
+      contacts: [...prevState.contacts].sort(compareName),
+    }));
+  };
 
-    render() {
-        return (
-            <ContactContext.Provider value={{
-                contacts: this.state.contacts,
-                toggleForm: this.toggleForm,
-                sort: this.sort,
-                addContact: this.addContact
-            }}>
-                {this.props.children}
-            </ContactContext.Provider>
-        );
-    }
+  addContact = (newContact) => {
+    this.setState((prevState) => ({
+      showForm: false,
+      contacts: [...prevState.contacts, newContact],
+    }));
+  };
+
+  render() {
+    return (
+      <ContactContext.Provider
+        value={{
+          contacts: this.state.contacts,
+          toggleForm: this.toggleForm,
+          sort: this.sort,
+          addContact: this.addContact,
+        }}>
+        {this.props.children}
+      </ContactContext.Provider>
+    );
+  }
 }
